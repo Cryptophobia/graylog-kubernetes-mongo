@@ -5,14 +5,16 @@ metadata:
   labels:
     service: graylog
   name: graylog
+  namespace: graylog
 spec:
   ports:
-  - name: "9000"
-    port: 9000
+  - name: "80"
+    port: 80
     targetPort: 9000
   - name: "12201"
     port: 12201
     targetPort: 12201
+  type: LoadBalancer
   selector:
     service: graylog
 status:

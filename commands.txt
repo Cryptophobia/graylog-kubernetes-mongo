@@ -1,0 +1,13 @@
+Many Clustered Mongo With Replication:
+
+kubectl delete -f ha-mongo-volume.yaml,elasticsearch-deployment.yaml,elasticsearch-service.yaml,graylog-service.yaml,graylog-deployment.yaml,ha-mongo-headless-service.yaml,ha-mongo-statefulset.yaml
+
+kubectl delete pvc mongo-persistent-storage-mongo-0 mongo-persistent-storage-mongo-1 mongo-persistent-storage-mongo-2 -n graylog
+
+After Creating Mongo Cluster
+Connect to cluster and run rs.initiate()
+
+
+Single Mongo Deployment:
+
+kubectl create -f ha-mongo-volume.yaml,ha-mongo-claim.yaml,elasticsearch-deployment.yaml,elasticsearch-service.yaml,graylog-service.yaml,graylog-deployment.yaml,mongo-deployment.yaml,mongo-service.yaml

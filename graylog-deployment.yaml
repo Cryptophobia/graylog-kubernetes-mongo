@@ -3,8 +3,9 @@ kind: Deployment
 metadata:
   creationTimestamp: null
   name: graylog
+  namespace: graylog
 spec:
-  replicas: 1
+  replicas: 4
   strategy: {}
   template:
     metadata:
@@ -15,12 +16,12 @@ spec:
       containers:
       - env:
         - name: GRAYLOG_WEB_ENDPOINT_URI
-          value: http://127.0.0.1:9000/api
+          value: http://ac19231203981012938012312319203-129380129830.us-west-2.elb.amazonaws.com/api
         - name: GRAYLOG_PASSWORD_SECRET
           value: somesaltpassword
         - name: GRAYLOG_ROOT_PASSWORD_SHA2
-          value: 5D5E792708BFA15F0AB42E817B4E69379777D2722E0529DFB031C0B847DB137D
-        image: graylog2/server:2.2.1-1
+          value: 8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918
+        image: graylog2/server:2.3.1-1
         name: graylog
         ports:
         - containerPort: 9000

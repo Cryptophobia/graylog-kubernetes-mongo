@@ -5,6 +5,7 @@ metadata:
   labels:
     service: elasticsearch
   name: elasticsearch
+  namespace: graylog
 spec:
   clusterIP: None
   ports:

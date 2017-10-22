@@ -1,0 +1,23 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  labels:
+    failure-domain.beta.kubernetes.io/region: us-west-2
+    failure-domain.beta.kubernetes.io/zone: us-west-2a
+  name: mongo-persistent-storage
+  namespace: graylog
+spec:
+  accessModes:
+  - ReadWriteMany
+  awsElasticBlockStore:
+    fsType: ext4
+    volumeID: aws://us-west-2a/vol-12830192830128
+  capacity:
+    storage: 1Gi
+  claimRef:
+    apiVersion: v1
+    kind: PersistentVolumeClaim
+    name: mongo-persistent-storage
+    namespace: graylog
+  persistentVolumeReclaimPolicy: Delete
+  storageClassName: default

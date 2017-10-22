@@ -3,8 +3,9 @@ kind: Deployment
 metadata:
   creationTimestamp: null
   name: elasticsearch
+  namespace: graylog
 spec:
-  replicas: 1
+  replicas: 4
   strategy: {}
   template:
     metadata:
@@ -15,8 +16,8 @@ spec:
       containers:
       - args:
         - elasticsearch
-        - -Des.cluster.name=graylog
-        image: elasticsearch:2
+        - -Ecluster.name=graylog
+        image: docker.elastic.co/elasticsearch/elasticsearch:5.5.3
         name: elasticsearch
         resources: {}
       restartPolicy: Always

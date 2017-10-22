@@ -3,6 +3,7 @@ kind: Deployment
 metadata:
   creationTimestamp: null
   name: mongo
+  namespace: graylog
 spec:
   replicas: 1
   strategy: {}
@@ -16,5 +17,12 @@ spec:
       - image: mongo:3
         name: mongo
         resources: {}
+        volumeMounts:
+        - name: mongo-persistent-storage
+          mountPath: /data/db
       restartPolicy: Always
+      volumes:
+      - name: mongo-persistent-storage
+        persistentVolumeClaim:
+          claimName: mongo-persistent-storage
 status: {}
